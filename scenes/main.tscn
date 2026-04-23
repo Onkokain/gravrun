@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://r1rho0ocxnuf"]
+
+[ext_resource type="PackedScene" uid="uid://cb23cjpydp1f0" path="res://scenes/player.tscn" id="1_o5qli"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ekxnf"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_bqqt6"]
+sky_material = SubResource("ProceduralSkyMaterial_ekxnf")
+
+[sub_resource type="Environment" id="Environment_wu84c"]
+background_mode = 2
+sky = SubResource("Sky_bqqt6")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_o5qli"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_o5qli"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="main" type="Node3D" unique_id=1946727683]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1200671077]
+environment = SubResource("Environment_wu84c")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1072786896]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1028282300]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1746751155]
+transform = Transform3D(15.312001, 0, 0, 0, 1, 0, 0, 0, 16.2, 0, 8.899649, 0)
+mesh = SubResource("BoxMesh_o5qli")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1915986020]
+transform = Transform3D(15.312001, 0, 0, 0, 1, 0, 0, 0, 16.2, 0, 8.899649, 0)
+shape = SubResource("ConcavePolygonShape3D_o5qli")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1009201826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=1283182675]
+transform = Transform3D(15.312001, 0, 0, 0, 1, 0, 0, 0, 16.2, 0, 8.899649, 0)
+mesh = SubResource("BoxMesh_o5qli")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1293666720]
+transform = Transform3D(15.312001, 0, 0, 0, 1, 0, 0, 0, 16.2, 0, 8.899649, 0)
+shape = SubResource("ConcavePolygonShape3D_o5qli")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=195794994]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 15, -1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3" unique_id=1181240773]
+transform = Transform3D(15.312001, 0, 0, 0, 1, 0, 0, 0, 16.2, 0, 8.899649, 0)
+mesh = SubResource("BoxMesh_o5qli")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=790298571]
+transform = Transform3D(15.312001, 0, 0, 0, 1, 0, 0, 0, 16.2, 0, 8.899649, 0)
+shape = SubResource("ConcavePolygonShape3D_o5qli")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="." unique_id=452693902]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 15, -17)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4" unique_id=1806738670]
+transform = Transform3D(15.312001, 0, 0, 0, 1, 0, 0, 0, 16.2, 0, 8.899649, 0)
+mesh = SubResource("BoxMesh_o5qli")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4" unique_id=1885810853]
+transform = Transform3D(15.312001, 0, 0, 0, 1, 0, 0, 0, 16.2, 0, 8.899649, 0)
+shape = SubResource("ConcavePolygonShape3D_o5qli")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="." unique_id=1054436500]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -15, 15, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D5" unique_id=814926892]
+transform = Transform3D(15.312001, 0, 0, 0, 1, 0, 0, 0, 16.2, 0, 8.899649, 0)
+mesh = SubResource("BoxMesh_o5qli")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5" unique_id=1413683807]
+transform = Transform3D(15.312001, 0, 0, 0, 1, 0, 0, 0, 16.2, 0, 8.899649, 0)
+shape = SubResource("ConcavePolygonShape3D_o5qli")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="." unique_id=898628748]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -1, 15, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D6" unique_id=1920067508]
+transform = Transform3D(15.312001, 0, 0, 0, 1, 0, 0, 0, 16.2, 0, 8.899649, 0)
+mesh = SubResource("BoxMesh_o5qli")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6" unique_id=1790391624]
+transform = Transform3D(15.312001, 0, 0, 0, 1, 0, 0, 0, 16.2, 0, 8.899649, 0)
+shape = SubResource("ConcavePolygonShape3D_o5qli")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=164635392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.725509, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=2127330984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.917542, 10.725509, 0)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=641179586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.917542, 11.805532, 0)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=38840406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2516551, 11.805532, 0)
+
+[node name="player" parent="." unique_id=2128478997 instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4307766, 10.995564, -2.330432)
