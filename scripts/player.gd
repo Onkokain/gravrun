@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var pitch_pivot: Node3D = $YawPivot/PitchPivot
 @onready var camera: Camera3D = $YawPivot/PitchPivot/Camera3D
 
-const SPEED := 6.0
+const SPEED := 5.0
 const JUMP_VELOCITY := 4.5
 const GRAVITY_MAGNITUDE := 9.81
 const MOUSE_SENS := 0.003
