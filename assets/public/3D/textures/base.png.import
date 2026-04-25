@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://reelrbl6ermu"
-path="res://.godot/imported/Material.001 Metallic.png-6c08182f023593b11686d03997e4ecb4.ctex"
+uid="uid://ctybrrugpbscy"
+path="res://.godot/imported/base.png-ac8757b6b339b4171152cd20bca47e71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/public/3D/textures/Material.001 Metallic.png"
-dest_files=["res://.godot/imported/Material.001 Metallic.png-6c08182f023593b11686d03997e4ecb4.ctex"]
+source_file="res://assets/public/3D/textures/base.png"
+dest_files=["res://.godot/imported/base.png-ac8757b6b339b4171152cd20bca47e71.ctex"]
 
 [params]
 

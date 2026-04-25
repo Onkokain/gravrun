@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://reelrbl6ermu"
-path="res://.godot/imported/Material.001 Metallic.png-6c08182f023593b11686d03997e4ecb4.ctex"
+uid="uid://cngt215o0sksr"
+path="res://.godot/imported/walls Base Color.png-b54be6d1412367d7bfc825cc352e7a54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/public/3D/textures/Material.001 Metallic.png"
-dest_files=["res://.godot/imported/Material.001 Metallic.png-6c08182f023593b11686d03997e4ecb4.ctex"]
+source_file="res://assets/public/3D/textures/walls Base Color.png"
+dest_files=["res://.godot/imported/walls Base Color.png-b54be6d1412367d7bfc825cc352e7a54.ctex"]
 
 [params]
 

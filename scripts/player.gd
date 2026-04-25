@@ -10,7 +10,7 @@ extends CharacterBody3D
 var can_move=true
 var moving_anim='walking'
 var SPEED := 5.0
-const JUMP_VELOCITY := 4.5
+const JUMP_VELOCITY := 6
 const GRAVITY_MAGNITUDE := 9.81
 const MOUSE_SENS := 0.003
 

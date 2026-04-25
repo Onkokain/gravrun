@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cm0qwn3gwdkr6"]
 
 [ext_resource type="Texture2D" uid="uid://d1mek0mx3120k" path="res://assets/public/3D/sci-fi_interior_room_0.png" id="1_7xb2g"]
+[ext_resource type="PackedScene" uid="uid://4c7vk5gt8mo6" path="res://scenes/door.tscn" id="2_2c2u3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8uc3"]
 resource_name = "Base_Material"
@@ -1067,503 +1068,553 @@ points = PackedVector3Array(2.624014, 4.8299446, 0.8528034, 0.62333536, 2.641702
 [node name="room" type="Node3D" unique_id=92296285]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
-[node name="Wall" type="Node3D" parent="." unique_id=1248428212]
+[node name="mainroom" type="Node3D" parent="." unique_id=360389328]
+
+[node name="Wall" type="Node3D" parent="mainroom" unique_id=1248428212]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
 
-[node name="Wall_Base Material_0" type="MeshInstance3D" parent="Wall" unique_id=1341727848]
+[node name="Wall_Base Material_0" type="MeshInstance3D" parent="mainroom/Wall" unique_id=1341727848]
 mesh = SubResource("ArrayMesh_7y45v")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Wall/Wall_Base Material_0" unique_id=1161935839]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Wall/Wall_Base Material_0" unique_id=1161935839]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=1976828754]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=1976828754]
 shape = SubResource("ConvexPolygonShape3D_7xb2g")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=536596568]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=536596568]
 shape = SubResource("ConvexPolygonShape3D_2c2u3")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=798277993]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=798277993]
 shape = SubResource("ConvexPolygonShape3D_jehp2")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=2108632808]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=2108632808]
 shape = SubResource("ConvexPolygonShape3D_64bsv")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=1585579533]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=1585579533]
 shape = SubResource("ConvexPolygonShape3D_bxm2c")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=826262692]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=826262692]
 shape = SubResource("ConvexPolygonShape3D_miva4")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=1441210400]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=1441210400]
 shape = SubResource("ConvexPolygonShape3D_14opd")
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=1654377428]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=1654377428]
 shape = SubResource("ConvexPolygonShape3D_i7km7")
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=790837481]
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=790837481]
 shape = SubResource("ConvexPolygonShape3D_dd4jv")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=1466302860]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=1466302860]
 shape = SubResource("ConvexPolygonShape3D_fraim")
 
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=364754626]
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=364754626]
 shape = SubResource("ConvexPolygonShape3D_70ynr")
 
-[node name="CollisionShape3D12" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=794525465]
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=794525465]
 shape = SubResource("ConvexPolygonShape3D_vxkc8")
 
-[node name="CollisionShape3D13" type="CollisionShape3D" parent="Wall/Wall_Base Material_0/StaticBody3D" unique_id=809999256]
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_0/StaticBody3D" unique_id=809999256]
 shape = SubResource("ConvexPolygonShape3D_mmegb")
 
-[node name="Ceiling" type="Node3D" parent="." unique_id=1171806558]
+[node name="Wall_Base Material_1" type="MeshInstance3D" parent="mainroom/Wall" unique_id=638069232]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 1.4210855e-14, 0, -1.4210855e-14, 0.99999994, 6.1082997, 0, 0)
+mesh = SubResource("ArrayMesh_7y45v")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Wall/Wall_Base Material_1" unique_id=1654944462]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=730917610]
+shape = SubResource("ConvexPolygonShape3D_7xb2g")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=1941717241]
+shape = SubResource("ConvexPolygonShape3D_2c2u3")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=748433292]
+shape = SubResource("ConvexPolygonShape3D_jehp2")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=334349789]
+shape = SubResource("ConvexPolygonShape3D_64bsv")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=1286986465]
+shape = SubResource("ConvexPolygonShape3D_bxm2c")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=1552289614]
+shape = SubResource("ConvexPolygonShape3D_miva4")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=456572656]
+shape = SubResource("ConvexPolygonShape3D_14opd")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=1807236020]
+shape = SubResource("ConvexPolygonShape3D_i7km7")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=926698526]
+shape = SubResource("ConvexPolygonShape3D_dd4jv")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=1863633650]
+shape = SubResource("ConvexPolygonShape3D_fraim")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=1019998022]
+shape = SubResource("ConvexPolygonShape3D_70ynr")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=753483798]
+shape = SubResource("ConvexPolygonShape3D_vxkc8")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="mainroom/Wall/Wall_Base Material_1/StaticBody3D" unique_id=1492539435]
+shape = SubResource("ConvexPolygonShape3D_mmegb")
+
+[node name="Ceiling" type="Node3D" parent="mainroom" unique_id=1171806558]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
 
-[node name="Ceiling_Base Material_0" type="MeshInstance3D" parent="Ceiling" unique_id=1782664880]
+[node name="Ceiling_Base Material_0" type="MeshInstance3D" parent="mainroom/Ceiling" unique_id=1782664880]
 mesh = SubResource("ArrayMesh_qofgk")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ceiling/Ceiling_Base Material_0" unique_id=961429064]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Ceiling/Ceiling_Base Material_0" unique_id=961429064]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling/Ceiling_Base Material_0/StaticBody3D" unique_id=513311454]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Ceiling/Ceiling_Base Material_0/StaticBody3D" unique_id=513311454]
 shape = SubResource("ConvexPolygonShape3D_xhbgv")
 
-[node name="Floor" type="Node3D" parent="." unique_id=1007431318]
+[node name="Floor" type="Node3D" parent="mainroom" unique_id=1007431318]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
 
-[node name="Floor_Base Material_0" type="MeshInstance3D" parent="Floor" unique_id=289610720]
+[node name="Floor_Base Material_0" type="MeshInstance3D" parent="mainroom/Floor" unique_id=289610720]
 mesh = SubResource("ArrayMesh_pusot")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor/Floor_Base Material_0" unique_id=1588026607]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Floor/Floor_Base Material_0" unique_id=1588026607]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Floor_Base Material_0/StaticBody3D" unique_id=463539543]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Floor/Floor_Base Material_0/StaticBody3D" unique_id=463539543]
 shape = SubResource("ConvexPolygonShape3D_0fied")
 
-[node name="Window" type="Node3D" parent="." unique_id=1204950660]
+[node name="Window" type="Node3D" parent="mainroom" unique_id=1204950660]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
 
-[node name="Window_Glass_0" type="MeshInstance3D" parent="Window" unique_id=1993452798]
+[node name="Window_Glass_0" type="MeshInstance3D" parent="mainroom/Window" unique_id=1993452798]
 mesh = SubResource("ArrayMesh_6wvjs")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Window/Window_Glass_0" unique_id=687888871]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Window/Window_Glass_0" unique_id=687888871]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Window/Window_Glass_0/StaticBody3D" unique_id=1833487320]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Window/Window_Glass_0/StaticBody3D" unique_id=1833487320]
 shape = SubResource("ConvexPolygonShape3D_klfix")
 
-[node name="Window_Window_border_0" type="MeshInstance3D" parent="Window" unique_id=81577321]
+[node name="Window_Window_border_0" type="MeshInstance3D" parent="mainroom/Window" unique_id=81577321]
 mesh = SubResource("ArrayMesh_velb0")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Window/Window_Window_border_0" unique_id=786944242]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Window/Window_Window_border_0" unique_id=786944242]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=82713150]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=82713150]
 shape = SubResource("ConvexPolygonShape3D_67326")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=376788768]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=376788768]
 shape = SubResource("ConvexPolygonShape3D_vjtw1")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=1444885518]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=1444885518]
 shape = SubResource("ConvexPolygonShape3D_pobn1")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=269689849]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=269689849]
 shape = SubResource("ConvexPolygonShape3D_c46x0")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=1505440659]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=1505440659]
 shape = SubResource("ConvexPolygonShape3D_ela7e")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=1275239663]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=1275239663]
 shape = SubResource("ConvexPolygonShape3D_lh611")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=139134250]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=139134250]
 shape = SubResource("ConvexPolygonShape3D_4ogp8")
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=1847433324]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=1847433324]
 shape = SubResource("ConvexPolygonShape3D_stplb")
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=2139944374]
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=2139944374]
 shape = SubResource("ConvexPolygonShape3D_u6ndj")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=109041293]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=109041293]
 shape = SubResource("ConvexPolygonShape3D_s3asj")
 
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=386768137]
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=386768137]
 shape = SubResource("ConvexPolygonShape3D_3ph6d")
 
-[node name="CollisionShape3D12" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=219925235]
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=219925235]
 shape = SubResource("ConvexPolygonShape3D_nhmu1")
 
-[node name="CollisionShape3D13" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=896009101]
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=896009101]
 shape = SubResource("ConvexPolygonShape3D_k1hy2")
 
-[node name="CollisionShape3D14" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=552093141]
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=552093141]
 shape = SubResource("ConvexPolygonShape3D_2gnmi")
 
-[node name="CollisionShape3D15" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=1489992293]
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=1489992293]
 shape = SubResource("ConvexPolygonShape3D_crv8w")
 
-[node name="CollisionShape3D16" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=62302697]
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=62302697]
 shape = SubResource("ConvexPolygonShape3D_jwtfb")
 
-[node name="CollisionShape3D17" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=594257032]
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=594257032]
 shape = SubResource("ConvexPolygonShape3D_u07mq")
 
-[node name="CollisionShape3D18" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=1466257208]
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=1466257208]
 shape = SubResource("ConvexPolygonShape3D_xlgg2")
 
-[node name="CollisionShape3D19" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=1365315620]
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=1365315620]
 shape = SubResource("ConvexPolygonShape3D_p843d")
 
-[node name="CollisionShape3D20" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=408768476]
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=408768476]
 shape = SubResource("ConvexPolygonShape3D_kxrks")
 
-[node name="CollisionShape3D21" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=839953898]
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=839953898]
 shape = SubResource("ConvexPolygonShape3D_0ke1n")
 
-[node name="CollisionShape3D22" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=676875492]
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=676875492]
 shape = SubResource("ConvexPolygonShape3D_rx7xl")
 
-[node name="CollisionShape3D23" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=643791938]
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=643791938]
 shape = SubResource("ConvexPolygonShape3D_wu2vc")
 
-[node name="CollisionShape3D24" type="CollisionShape3D" parent="Window/Window_Window_border_0/StaticBody3D" unique_id=1275591868]
+[node name="CollisionShape3D24" type="CollisionShape3D" parent="mainroom/Window/Window_Window_border_0/StaticBody3D" unique_id=1275591868]
 shape = SubResource("ConvexPolygonShape3D_5on8d")
 
-[node name="TV" type="Node3D" parent="." unique_id=1510260531]
+[node name="TV" type="Node3D" parent="mainroom" unique_id=1510260531]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
 
-[node name="TV_Screen_0" type="MeshInstance3D" parent="TV" unique_id=1619566344]
+[node name="TV_Screen_0" type="MeshInstance3D" parent="mainroom/TV" unique_id=1619566344]
 mesh = SubResource("ArrayMesh_u0dqk")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TV/TV_Screen_0" unique_id=1206125172]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/TV/TV_Screen_0" unique_id=1206125172]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TV/TV_Screen_0/StaticBody3D" unique_id=688734723]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/TV/TV_Screen_0/StaticBody3D" unique_id=688734723]
 shape = SubResource("ConvexPolygonShape3D_6l7ye")
 
-[node name="TV_Emmisive_0" type="MeshInstance3D" parent="TV" unique_id=1273887856]
+[node name="TV_Emmisive_0" type="MeshInstance3D" parent="mainroom/TV" unique_id=1273887856]
 mesh = SubResource("ArrayMesh_88no7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TV/TV_Emmisive_0" unique_id=429523877]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/TV/TV_Emmisive_0" unique_id=429523877]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TV/TV_Emmisive_0/StaticBody3D" unique_id=1846339729]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/TV/TV_Emmisive_0/StaticBody3D" unique_id=1846339729]
 shape = SubResource("ConvexPolygonShape3D_0w2xp")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="TV/TV_Emmisive_0/StaticBody3D" unique_id=327312235]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="mainroom/TV/TV_Emmisive_0/StaticBody3D" unique_id=327312235]
 shape = SubResource("ConvexPolygonShape3D_a7dso")
 
-[node name="TV Led Panel" type="Node3D" parent="." unique_id=1287453181]
+[node name="TV Led Panel" type="Node3D" parent="mainroom" unique_id=1287453181]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
 
-[node name="TV Led Panel_Emmisve_0" type="MeshInstance3D" parent="TV Led Panel" unique_id=1454106861]
+[node name="TV Led Panel_Emmisve_0" type="MeshInstance3D" parent="mainroom/TV Led Panel" unique_id=1454106861]
 mesh = SubResource("ArrayMesh_ib7ga")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TV Led Panel/TV Led Panel_Emmisve_0" unique_id=1603709555]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/TV Led Panel/TV Led Panel_Emmisve_0" unique_id=1603709555]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TV Led Panel/TV Led Panel_Emmisve_0/StaticBody3D" unique_id=199792166]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/TV Led Panel/TV Led Panel_Emmisve_0/StaticBody3D" unique_id=199792166]
 shape = SubResource("ConvexPolygonShape3D_ryvce")
 
-[node name="TV Led Panel_Emmisive_0" type="MeshInstance3D" parent="TV Led Panel" unique_id=2026203832]
+[node name="TV Led Panel_Emmisive_0" type="MeshInstance3D" parent="mainroom/TV Led Panel" unique_id=2026203832]
 mesh = SubResource("ArrayMesh_dq2xr")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TV Led Panel/TV Led Panel_Emmisive_0" unique_id=1997951715]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/TV Led Panel/TV Led Panel_Emmisive_0" unique_id=1997951715]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TV Led Panel/TV Led Panel_Emmisive_0/StaticBody3D" unique_id=360140770]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/TV Led Panel/TV Led Panel_Emmisive_0/StaticBody3D" unique_id=360140770]
 shape = SubResource("ConvexPolygonShape3D_b6qi1")
 
-[node name="Led Downlight_Cylinder_001" type="Node3D" parent="." unique_id=613367103]
+[node name="Led Downlight_Cylinder_001" type="Node3D" parent="mainroom" unique_id=613367103]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
 
-[node name="Led Downlight_Cylinder_001_LED housing_0" type="MeshInstance3D" parent="Led Downlight_Cylinder_001" unique_id=1811828474]
+[node name="Led Downlight_Cylinder_001_LED housing_0" type="MeshInstance3D" parent="mainroom/Led Downlight_Cylinder_001" unique_id=1811828474]
 mesh = SubResource("ArrayMesh_i7hcp")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0" unique_id=716270149]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0" unique_id=716270149]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1073388378]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1073388378]
 shape = SubResource("ConvexPolygonShape3D_wdaj5")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=873764878]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=873764878]
 shape = SubResource("ConvexPolygonShape3D_5rkg0")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=96500354]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=96500354]
 shape = SubResource("ConvexPolygonShape3D_mfc8u")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=123953341]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=123953341]
 shape = SubResource("ConvexPolygonShape3D_wcfd2")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1997556282]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1997556282]
 shape = SubResource("ConvexPolygonShape3D_u3hkj")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=783697934]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=783697934]
 shape = SubResource("ConvexPolygonShape3D_ymx7v")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=589250307]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=589250307]
 shape = SubResource("ConvexPolygonShape3D_joqri")
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1963726357]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1963726357]
 shape = SubResource("ConvexPolygonShape3D_2dsxw")
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=626086223]
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=626086223]
 shape = SubResource("ConvexPolygonShape3D_1vmq4")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=2104665020]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=2104665020]
 shape = SubResource("ConvexPolygonShape3D_4sqdr")
 
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=545666512]
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=545666512]
 shape = SubResource("ConvexPolygonShape3D_y1vr3")
 
-[node name="CollisionShape3D12" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=703059547]
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=703059547]
 shape = SubResource("ConvexPolygonShape3D_brrww")
 
-[node name="CollisionShape3D13" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1253829953]
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1253829953]
 shape = SubResource("ConvexPolygonShape3D_yo5yl")
 
-[node name="CollisionShape3D14" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=333772316]
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=333772316]
 shape = SubResource("ConvexPolygonShape3D_my7pk")
 
-[node name="CollisionShape3D15" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1078129390]
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1078129390]
 shape = SubResource("ConvexPolygonShape3D_7ka17")
 
-[node name="CollisionShape3D16" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=2102322267]
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=2102322267]
 shape = SubResource("ConvexPolygonShape3D_lx3nq")
 
-[node name="CollisionShape3D17" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1912730213]
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1912730213]
 shape = SubResource("ConvexPolygonShape3D_5agyx")
 
-[node name="CollisionShape3D18" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=571843598]
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=571843598]
 shape = SubResource("ConvexPolygonShape3D_272dx")
 
-[node name="CollisionShape3D19" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1403490470]
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1403490470]
 shape = SubResource("ConvexPolygonShape3D_5krkk")
 
-[node name="CollisionShape3D20" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=262853776]
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=262853776]
 shape = SubResource("ConvexPolygonShape3D_iw3ey")
 
-[node name="CollisionShape3D21" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1897916355]
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1897916355]
 shape = SubResource("ConvexPolygonShape3D_ukqek")
 
-[node name="CollisionShape3D22" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=950758649]
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=950758649]
 shape = SubResource("ConvexPolygonShape3D_mwbu2")
 
-[node name="CollisionShape3D23" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1486894221]
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1486894221]
 shape = SubResource("ConvexPolygonShape3D_gks8v")
 
-[node name="CollisionShape3D24" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=903754230]
+[node name="CollisionShape3D24" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=903754230]
 shape = SubResource("ConvexPolygonShape3D_j0ey5")
 
-[node name="CollisionShape3D25" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1169764338]
+[node name="CollisionShape3D25" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1169764338]
 shape = SubResource("ConvexPolygonShape3D_rukns")
 
-[node name="CollisionShape3D26" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1969675471]
+[node name="CollisionShape3D26" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1969675471]
 shape = SubResource("ConvexPolygonShape3D_chfdb")
 
-[node name="CollisionShape3D27" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=168144668]
+[node name="CollisionShape3D27" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=168144668]
 shape = SubResource("ConvexPolygonShape3D_vlj5h")
 
-[node name="CollisionShape3D28" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=738635189]
+[node name="CollisionShape3D28" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=738635189]
 shape = SubResource("ConvexPolygonShape3D_5mfui")
 
-[node name="CollisionShape3D29" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1126937051]
+[node name="CollisionShape3D29" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1126937051]
 shape = SubResource("ConvexPolygonShape3D_73gbf")
 
-[node name="CollisionShape3D30" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1954364279]
+[node name="CollisionShape3D30" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1954364279]
 shape = SubResource("ConvexPolygonShape3D_kaxrc")
 
-[node name="CollisionShape3D31" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=764664781]
+[node name="CollisionShape3D31" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=764664781]
 shape = SubResource("ConvexPolygonShape3D_2vnwc")
 
-[node name="CollisionShape3D32" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1716861597]
+[node name="CollisionShape3D32" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED housing_0/StaticBody3D" unique_id=1716861597]
 shape = SubResource("ConvexPolygonShape3D_ktuej")
 
-[node name="Led Downlight_Cylinder_001_LED_emmisive_0" type="MeshInstance3D" parent="Led Downlight_Cylinder_001" unique_id=1735185237]
+[node name="Led Downlight_Cylinder_001_LED_emmisive_0" type="MeshInstance3D" parent="mainroom/Led Downlight_Cylinder_001" unique_id=1735185237]
 mesh = SubResource("ArrayMesh_8n6ka")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED_emmisive_0" unique_id=1917210584]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED_emmisive_0" unique_id=1917210584]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED_emmisive_0/StaticBody3D" unique_id=1947967090]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_001/Led Downlight_Cylinder_001_LED_emmisive_0/StaticBody3D" unique_id=1947967090]
 shape = SubResource("ConvexPolygonShape3D_h7crv")
 
-[node name="Led Downlight_Cylinder_003" type="Node3D" parent="." unique_id=234040727]
+[node name="Led Downlight_Cylinder_003" type="Node3D" parent="mainroom" unique_id=234040727]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
 
-[node name="Led Downlight_Cylinder_003_LED housing_0" type="MeshInstance3D" parent="Led Downlight_Cylinder_003" unique_id=758524455]
+[node name="Led Downlight_Cylinder_003_LED housing_0" type="MeshInstance3D" parent="mainroom/Led Downlight_Cylinder_003" unique_id=758524455]
 mesh = SubResource("ArrayMesh_foeja")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0" unique_id=1642439735]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0" unique_id=1642439735]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1564311092]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1564311092]
 shape = SubResource("ConvexPolygonShape3D_hpncf")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=750073282]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=750073282]
 shape = SubResource("ConvexPolygonShape3D_1whl4")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=281005860]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=281005860]
 shape = SubResource("ConvexPolygonShape3D_fhpmf")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=316491486]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=316491486]
 shape = SubResource("ConvexPolygonShape3D_s46rg")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=626051708]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=626051708]
 shape = SubResource("ConvexPolygonShape3D_0rha8")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1398925514]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1398925514]
 shape = SubResource("ConvexPolygonShape3D_kf6lb")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=649763684]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=649763684]
 shape = SubResource("ConvexPolygonShape3D_e6chg")
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1768510686]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1768510686]
 shape = SubResource("ConvexPolygonShape3D_8i15a")
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=213151331]
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=213151331]
 shape = SubResource("ConvexPolygonShape3D_5mhe3")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1608474862]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1608474862]
 shape = SubResource("ConvexPolygonShape3D_8xgvc")
 
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=83249777]
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=83249777]
 shape = SubResource("ConvexPolygonShape3D_u4tde")
 
-[node name="CollisionShape3D12" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1181758570]
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1181758570]
 shape = SubResource("ConvexPolygonShape3D_8617p")
 
-[node name="CollisionShape3D13" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1791652322]
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1791652322]
 shape = SubResource("ConvexPolygonShape3D_38q53")
 
-[node name="CollisionShape3D14" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1756341572]
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1756341572]
 shape = SubResource("ConvexPolygonShape3D_bjfnh")
 
-[node name="CollisionShape3D15" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=765988750]
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=765988750]
 shape = SubResource("ConvexPolygonShape3D_36f60")
 
-[node name="CollisionShape3D16" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1726119522]
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1726119522]
 shape = SubResource("ConvexPolygonShape3D_7vp8b")
 
-[node name="CollisionShape3D17" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=146811015]
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=146811015]
 shape = SubResource("ConvexPolygonShape3D_yki2m")
 
-[node name="CollisionShape3D18" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=2041817882]
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=2041817882]
 shape = SubResource("ConvexPolygonShape3D_d3wdf")
 
-[node name="CollisionShape3D19" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1623072388]
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1623072388]
 shape = SubResource("ConvexPolygonShape3D_0jlmd")
 
-[node name="CollisionShape3D20" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=721958221]
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=721958221]
 shape = SubResource("ConvexPolygonShape3D_a12pa")
 
-[node name="CollisionShape3D21" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=884691338]
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=884691338]
 shape = SubResource("ConvexPolygonShape3D_0fixr")
 
-[node name="CollisionShape3D22" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=549540323]
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=549540323]
 shape = SubResource("ConvexPolygonShape3D_tj4kt")
 
-[node name="CollisionShape3D23" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=319395817]
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=319395817]
 shape = SubResource("ConvexPolygonShape3D_hg5qu")
 
-[node name="CollisionShape3D24" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=310230432]
+[node name="CollisionShape3D24" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=310230432]
 shape = SubResource("ConvexPolygonShape3D_tyy43")
 
-[node name="CollisionShape3D25" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=389380083]
+[node name="CollisionShape3D25" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=389380083]
 shape = SubResource("ConvexPolygonShape3D_roumg")
 
-[node name="CollisionShape3D26" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1840228681]
+[node name="CollisionShape3D26" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1840228681]
 shape = SubResource("ConvexPolygonShape3D_3whkk")
 
-[node name="CollisionShape3D27" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1257967509]
+[node name="CollisionShape3D27" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1257967509]
 shape = SubResource("ConvexPolygonShape3D_hv40t")
 
-[node name="CollisionShape3D28" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=2120245061]
+[node name="CollisionShape3D28" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=2120245061]
 shape = SubResource("ConvexPolygonShape3D_364cb")
 
-[node name="CollisionShape3D29" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=342650670]
+[node name="CollisionShape3D29" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=342650670]
 shape = SubResource("ConvexPolygonShape3D_ff7cb")
 
-[node name="CollisionShape3D30" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1984938466]
+[node name="CollisionShape3D30" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1984938466]
 shape = SubResource("ConvexPolygonShape3D_7a2a6")
 
-[node name="CollisionShape3D31" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1895506397]
+[node name="CollisionShape3D31" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=1895506397]
 shape = SubResource("ConvexPolygonShape3D_mavom")
 
-[node name="CollisionShape3D32" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=180441397]
+[node name="CollisionShape3D32" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED housing_0/StaticBody3D" unique_id=180441397]
 shape = SubResource("ConvexPolygonShape3D_0qr1c")
 
-[node name="Led Downlight_Cylinder_003_LED_emmisive_0" type="MeshInstance3D" parent="Led Downlight_Cylinder_003" unique_id=1925407321]
+[node name="Led Downlight_Cylinder_003_LED_emmisive_0" type="MeshInstance3D" parent="mainroom/Led Downlight_Cylinder_003" unique_id=1925407321]
 mesh = SubResource("ArrayMesh_3sflg")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED_emmisive_0" unique_id=1137425164]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED_emmisive_0" unique_id=1137425164]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED_emmisive_0/StaticBody3D" unique_id=1675517697]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Led Downlight_Cylinder_003/Led Downlight_Cylinder_003_LED_emmisive_0/StaticBody3D" unique_id=1675517697]
 shape = SubResource("ConvexPolygonShape3D_k8f2n")
 
-[node name="Bed Top Light" type="Node3D" parent="." unique_id=629731518]
+[node name="Bed Top Light" type="Node3D" parent="mainroom" unique_id=629731518]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
 
-[node name="Bed Top Light_Bed Top Light Metal_0" type="MeshInstance3D" parent="Bed Top Light" unique_id=832486998]
+[node name="Bed Top Light_Bed Top Light Metal_0" type="MeshInstance3D" parent="mainroom/Bed Top Light" unique_id=832486998]
 mesh = SubResource("ArrayMesh_3pvfu")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Bed Top Light/Bed Top Light_Bed Top Light Metal_0" unique_id=1022643216]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Bed Top Light/Bed Top Light_Bed Top Light Metal_0" unique_id=1022643216]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bed Top Light/Bed Top Light_Bed Top Light Metal_0/StaticBody3D" unique_id=448100993]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Bed Top Light/Bed Top Light_Bed Top Light Metal_0/StaticBody3D" unique_id=448100993]
 shape = SubResource("ConvexPolygonShape3D_4r3os")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bed Top Light/Bed Top Light_Bed Top Light Metal_0/StaticBody3D" unique_id=262557251]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="mainroom/Bed Top Light/Bed Top Light_Bed Top Light Metal_0/StaticBody3D" unique_id=262557251]
 shape = SubResource("ConvexPolygonShape3D_utpnd")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Bed Top Light/Bed Top Light_Bed Top Light Metal_0/StaticBody3D" unique_id=1528112247]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="mainroom/Bed Top Light/Bed Top Light_Bed Top Light Metal_0/StaticBody3D" unique_id=1528112247]
 shape = SubResource("ConvexPolygonShape3D_fen8y")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Bed Top Light/Bed Top Light_Bed Top Light Metal_0/StaticBody3D" unique_id=1353209281]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="mainroom/Bed Top Light/Bed Top Light_Bed Top Light Metal_0/StaticBody3D" unique_id=1353209281]
 shape = SubResource("ConvexPolygonShape3D_5f41m")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Bed Top Light/Bed Top Light_Bed Top Light Metal_0/StaticBody3D" unique_id=1913738330]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="mainroom/Bed Top Light/Bed Top Light_Bed Top Light Metal_0/StaticBody3D" unique_id=1913738330]
 shape = SubResource("ConvexPolygonShape3D_ybcyg")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Bed Top Light/Bed Top Light_Bed Top Light Metal_0/StaticBody3D" unique_id=1507328182]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="mainroom/Bed Top Light/Bed Top Light_Bed Top Light Metal_0/StaticBody3D" unique_id=1507328182]
 shape = SubResource("ConvexPolygonShape3D_ga5p0")
 
-[node name="Bed Top Light_Bed Top Light Emmision_0" type="MeshInstance3D" parent="Bed Top Light" unique_id=859147081]
+[node name="Bed Top Light_Bed Top Light Emmision_0" type="MeshInstance3D" parent="mainroom/Bed Top Light" unique_id=859147081]
 mesh = SubResource("ArrayMesh_ui746")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Bed Top Light/Bed Top Light_Bed Top Light Emmision_0" unique_id=1238543428]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Bed Top Light/Bed Top Light_Bed Top Light Emmision_0" unique_id=1238543428]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bed Top Light/Bed Top Light_Bed Top Light Emmision_0/StaticBody3D" unique_id=296349369]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Bed Top Light/Bed Top Light_Bed Top Light Emmision_0/StaticBody3D" unique_id=296349369]
 shape = SubResource("ConvexPolygonShape3D_5jmdy")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bed Top Light/Bed Top Light_Bed Top Light Emmision_0/StaticBody3D" unique_id=877847215]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="mainroom/Bed Top Light/Bed Top Light_Bed Top Light Emmision_0/StaticBody3D" unique_id=877847215]
 shape = SubResource("ConvexPolygonShape3D_53ay2")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Bed Top Light/Bed Top Light_Bed Top Light Emmision_0/StaticBody3D" unique_id=695046194]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="mainroom/Bed Top Light/Bed Top Light_Bed Top Light Emmision_0/StaticBody3D" unique_id=695046194]
 shape = SubResource("ConvexPolygonShape3D_ccc16")
 
-[node name="Decal" type="Node3D" parent="." unique_id=1405224170]
+[node name="Decal" type="Node3D" parent="mainroom" unique_id=1405224170]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
 
-[node name="Decal_Decal_0" type="MeshInstance3D" parent="Decal" unique_id=1229087702]
+[node name="Decal_Decal_0" type="MeshInstance3D" parent="mainroom/Decal" unique_id=1229087702]
 mesh = SubResource("ArrayMesh_4lmku")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Decal/Decal_Decal_0" unique_id=1388443579]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Decal/Decal_Decal_0" unique_id=1388443579]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Decal/Decal_Decal_0/StaticBody3D" unique_id=1015782136]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Decal/Decal_Decal_0/StaticBody3D" unique_id=1015782136]
 shape = SubResource("ConvexPolygonShape3D_t464b")
 
-[node name="Bed Lamp" type="Node3D" parent="." unique_id=86890381]
+[node name="Bed Lamp" type="Node3D" parent="mainroom" unique_id=86890381]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
 
-[node name="Bed Lamp_Bed Lamp_0" type="MeshInstance3D" parent="Bed Lamp" unique_id=1851272884]
+[node name="Bed Lamp_Bed Lamp_0" type="MeshInstance3D" parent="mainroom/Bed Lamp" unique_id=1851272884]
 mesh = SubResource("ArrayMesh_wy0fe")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Bed Lamp/Bed Lamp_Bed Lamp_0" unique_id=861601576]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Bed Lamp/Bed Lamp_Bed Lamp_0" unique_id=861601576]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bed Lamp/Bed Lamp_Bed Lamp_0/StaticBody3D" unique_id=1066263191]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Bed Lamp/Bed Lamp_Bed Lamp_0/StaticBody3D" unique_id=1066263191]
 shape = SubResource("ConvexPolygonShape3D_ypbjv")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bed Lamp/Bed Lamp_Bed Lamp_0/StaticBody3D" unique_id=954979031]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="mainroom/Bed Lamp/Bed Lamp_Bed Lamp_0/StaticBody3D" unique_id=954979031]
 shape = SubResource("ConvexPolygonShape3D_qes61")
 
-[node name="Bed_frozen" type="Node3D" parent="." unique_id=484432855]
+[node name="Bed_frozen" type="Node3D" parent="mainroom" unique_id=484432855]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
 
-[node name="Bed_frozen__0" type="MeshInstance3D" parent="Bed_frozen" unique_id=449218654]
+[node name="Bed_frozen__0" type="MeshInstance3D" parent="mainroom/Bed_frozen" unique_id=449218654]
 mesh = SubResource("ArrayMesh_xc47k")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Bed_frozen/Bed_frozen__0" unique_id=897585748]
+[node name="StaticBody3D" type="StaticBody3D" parent="mainroom/Bed_frozen/Bed_frozen__0" unique_id=897585748]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bed_frozen/Bed_frozen__0/StaticBody3D" unique_id=1877306059]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Bed_frozen/Bed_frozen__0/StaticBody3D" unique_id=1877306059]
 shape = SubResource("ConvexPolygonShape3D_n68qj")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bed_frozen/Bed_frozen__0/StaticBody3D" unique_id=237991151]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="mainroom/Bed_frozen/Bed_frozen__0/StaticBody3D" unique_id=237991151]
 shape = SubResource("ConvexPolygonShape3D_a8b2k")
+
+[node name="door" parent="." unique_id=1477694485 instance=ExtResource("2_2c2u3")]
+transform = Transform3D(0.4, 0, 0, 0, 0.376, 1.475087e-14, 0, -1.6029848e-14, 0.346, 2.0402827, 0.8749999, 1.423943)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://reelrbl6ermu"
-path="res://.godot/imported/Material.001 Metallic.png-6c08182f023593b11686d03997e4ecb4.ctex"
+uid="uid://cyjb3g7gtq7jb"
+path="res://.godot/imported/Cylinder.010 Metallic.png-57f65f1f4252fc873f2368736a542bb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/public/3D/textures/Material.001 Metallic.png"
-dest_files=["res://.godot/imported/Material.001 Metallic.png-6c08182f023593b11686d03997e4ecb4.ctex"]
+source_file="res://assets/public/3D/textures/Cylinder.010 Metallic.png"
+dest_files=["res://.godot/imported/Cylinder.010 Metallic.png-57f65f1f4252fc873f2368736a542bb5.ctex"]
 
 [params]
 
