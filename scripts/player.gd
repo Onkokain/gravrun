@@ -6,10 +6,13 @@ extends CharacterBody3D
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 @onready var body_mesh: Skeleton3D = $mixamo_base/Armature/Skeleton3D
 @onready var animation: AnimationPlayer = $mixamo_base/AnimationPlayer
+@onready var walking: AudioStreamPlayer3D = $walking
+@onready var jump: AudioStreamPlayer3D = $jump
 
-var can_move=true
-var moving_anim='walking'
+var can_move = true
+var moving_anim = "walking"
 var SPEED := 5.0
+
 const JUMP_VELOCITY := 6
 const GRAVITY_MAGNITUDE := 9.81
 const MOUSE_SENS := 0.003
@@ -22,9 +25,20 @@ const DECEL := 30.0
 const PITCH_LIMIT := deg_to_rad(85.0)
 const CAMERA_NEAR := 0.05
 const CAMERA_HEIGHT_OFFSET := -0.3
+const CAMERA_BOB_FREQUENCY := 9.0
+const CAMERA_BOB_VERTICAL := 0.08
+const CAMERA_BOB_HORIZONTAL := 0.025
+const CAMERA_BOB_TILT := 0.015
+const CAMERA_BOB_RETURN_SPEED := 10.0
 const ANIMATION_BLEND_TIME := 0.18
 const SWITCH_RAY_LENGTH := 100.0
 const DIRECTION_EPSILON := 0.0001
+
+# Footstep sound settings
+const WALK_PITCH := 1.0
+const RUN_PITCH := 1.22
+const WALK_VOLUME_DB := -4.0
+const SILENT_VOLUME_DB := -80.0
 
 var gravity_dir: Vector3 = Vector3.DOWN
 var target_basis: Basis
@@ -32,6 +46,8 @@ var target_pitch := 0.0
 var is_jumping = false
 var was_on_floor := false
 var current_animation := ""
+var camera_bob_time := 0.0
+var base_camera_position := Vector3.ZERO
 
 func _ready() -> void:
 	target_basis = global_transform.basis.orthonormalized()
@@ -40,17 +56,21 @@ func _ready() -> void:
 	setup_first_person_view()
 	was_on_floor = is_on_floor()
 	play_animation("idle")
-	
+
+	walking.volume_db = SILENT_VOLUME_DB
+	walking.pitch_scale = WALK_PITCH
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("run"):
-		SPEED=8 if SPEED==5 else 5
-		moving_anim='running' if moving_anim=='walking' else 'walking'
+		SPEED = 8 if SPEED == 5 else 5
+		moving_anim = "running" if moving_anim == "walking" else "walking"
+
 	if event.is_action_pressed("kick"):
-		can_move=false
+		can_move = false
 		play_animation_with_blend("kick", 0.1, true)
 		await animation.animation_finished
 		current_animation = ""
-		can_move=true
+		can_move = true
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -92,6 +112,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity -= g * JUMP_VELOCITY
 		is_jumping = true
+		jump.play()
 
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var up := up_direction.normalized()
@@ -111,7 +132,7 @@ func _physics_process(delta: float) -> void:
 	var vertical_vel := up * velocity.dot(up)
 	var horizontal_vel := velocity - vertical_vel
 
-	if move_dir != Vector3.ZERO:
+	if move_dir != Vector3.ZERO and can_move:
 		var desired_horizontal := move_dir * SPEED
 		horizontal_vel = horizontal_vel.move_toward(desired_horizontal, ACCEL * delta)
 	else:
@@ -126,6 +147,25 @@ func _physics_process(delta: float) -> void:
 
 	var pitch_alpha := 1.0 - exp(-PITCH_ROTATE_SPEED * delta)
 	pitch_pivot.rotation.x = lerp_angle(pitch_pivot.rotation.x, target_pitch, pitch_alpha)
+
+	update_camera_bob(delta, horizontal_vel, ended_on_floor)
+	update_footsteps(move_dir, ended_on_floor)
+
+func update_footsteps(move_dir: Vector3, grounded: bool) -> void:
+	var is_moving := move_dir.length_squared() > DIRECTION_EPSILON and grounded and can_move
+
+	if is_moving:
+		if not walking.playing:
+			walking.play()
+
+		var target_pitch := RUN_PITCH if moving_anim == "running" else WALK_PITCH
+		walking.pitch_scale = lerp(walking.pitch_scale, target_pitch, 0.15)
+		walking.volume_db = lerp(walking.volume_db, WALK_VOLUME_DB, 0.15)
+	else:
+		walking.volume_db = lerp(walking.volume_db, SILENT_VOLUME_DB, 0.15)
+
+		if walking.volume_db < -70.0 and walking.playing:
+			walking.stop()
 
 func get_switch_gravity_direction() -> Vector3:
 	var ray_origin := camera.global_transform.origin
@@ -155,26 +195,45 @@ func change_gravity(new_dir: Vector3) -> void:
 		return
 
 	gravity_dir = new_dir
-	is_jumping=false
+	is_jumping = false
 	var new_up := -gravity_dir
 
 	var forward := get_projected_forward_on_plane(new_up)
 	target_basis = Basis.looking_at(forward, new_up).orthonormalized()
 
-	# Keep momentum tangent to the new floor.
 	velocity = velocity.slide(new_up)
 	up_direction = new_up
 
 func setup_first_person_view() -> void:
 	var eye_height := 1.6
 	var shape := collision_shape.shape
+
 	if shape is CapsuleShape3D:
 		eye_height = collision_shape.position.y + (shape.height * 0.5)
+
 	eye_height += CAMERA_HEIGHT_OFFSET
 
 	pitch_pivot.position = Vector3(0.0, eye_height, 0.0)
 	camera.position = Vector3.ZERO
+	base_camera_position = camera.position
 	camera.near = CAMERA_NEAR
+
+func update_camera_bob(delta: float, horizontal_vel: Vector3, grounded: bool) -> void:
+	var move_speed := horizontal_vel.length()
+	var move_ratio = clamp(move_speed / max(SPEED, 0.001), 0.0, 1.0)
+	var is_walking = grounded and move_ratio > 0.1
+
+	var target_offset := Vector3.ZERO
+	var target_roll := 0.0
+
+	if is_walking:
+		camera_bob_time += delta * CAMERA_BOB_FREQUENCY * lerp(0.65, 1.2, move_ratio)
+		target_offset.y = -abs(sin(camera_bob_time)) * CAMERA_BOB_VERTICAL * move_ratio
+		target_offset.x = cos(camera_bob_time * 0.5) * CAMERA_BOB_HORIZONTAL * move_ratio
+		target_roll = target_offset.x * CAMERA_BOB_TILT / CAMERA_BOB_HORIZONTAL
+
+	camera.position = camera.position.lerp(base_camera_position + target_offset, delta * CAMERA_BOB_RETURN_SPEED)
+	camera.rotation.z = lerp(camera.rotation.z, target_roll, delta * CAMERA_BOB_RETURN_SPEED)
 
 func update_animation_state(started_on_floor: bool, ended_on_floor: bool, move_dir: Vector3) -> void:
 	if is_jumping and ended_on_floor and not started_on_floor:
@@ -211,6 +270,7 @@ func get_projected_forward_on_plane(new_up: Vector3) -> Vector3:
 
 	for candidate in candidates:
 		var projected = candidate - new_up * candidate.dot(new_up)
+
 		if projected.length_squared() > DIRECTION_EPSILON:
 			return projected.normalized()
 
@@ -218,6 +278,7 @@ func get_projected_forward_on_plane(new_up: Vector3) -> Vector3:
 
 func get_orthogonal_vector(v: Vector3) -> Vector3:
 	var axis := Vector3.UP
+
 	if abs(v.dot(axis)) > 0.99:
 		axis = Vector3.RIGHT
 

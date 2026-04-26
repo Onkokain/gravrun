@@ -119,6 +119,8 @@ shadow_mesh = SubResource("ArrayMesh_n4onh")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xhbgv"]
 points = PackedVector3Array(2.3583663, 1.6194701, 3.4503, -2.6310406, -3.4646804, 3.625, -2.6382027, -3.4724495, 4.3582, -2.6382027, 2.3995497, 4.3582, 2.7750468, -3.4724495, 4.3582, 2.7750468, 2.3995497, 4.3582, -2.6310406, 2.3917806, 3.625, 2.7678847, -3.4646804, 3.625, -2.2765136, -0.037472546, 3.4003944, 2.7678847, 2.3917806, 3.625, 2.6128044, -0.037472546, 3.4003944, -2.04202, 1.6194701, 3.4503)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c2u3"]
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_02iys"]
 _surfaces = [{
 "aabb": AABB(-2.8260684, -3.6804733, -0.12467122, 5.836535, 6.288075, 0.13563481),
@@ -1172,6 +1174,11 @@ mesh = SubResource("ArrayMesh_qofgk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mainroom/Ceiling/Ceiling_Base Material_0/StaticBody3D" unique_id=513311454]
 shape = SubResource("ConvexPolygonShape3D_xhbgv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="mainroom/Ceiling" unique_id=1145494013]
+transform = Transform3D(0.99999905, 0, 0, 0, 0.99999905, 1.1368684e-13, 0, -1.1368684e-13, 0.99999905, 0, 0.272614, 5.359825)
+size = Vector3(6.765625, 7.864258, 2.6020508)
+material = SubResource("StandardMaterial3D_2c2u3")
 
 [node name="Floor" type="Node3D" parent="mainroom" unique_id=1007431318]
 transform = Transform3D(0.65484667, 0, 0, 0, -1.0668806e-07, 0.65484667, 0, -0.65484667, -1.0668806e-07, 0, 0, 2)
