@@ -4,15 +4,17 @@ extends CharacterBody3D
 @onready var pitch_pivot: Node3D = $YawPivot/PitchPivot
 @onready var camera: Camera3D = $YawPivot/PitchPivot/Camera3D
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
-@onready var body_mesh: Skeleton3D = $mixamo_base/Armature/Skeleton3D
-@onready var animation: AnimationPlayer = $mixamo_base/AnimationPlayer
+@onready var body_mesh: Skeleton3D = get_node_or_null("FirstPersonArms/Skeleton3D")
+@onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var walking: AudioStreamPlayer3D = $walking
 @onready var jump: AudioStreamPlayer3D = $jump
+@onready var gun: Node3D = $YawPivot/PitchPivot/Camera3D/gun
 
 var can_move = true
 var moving_anim = "walking"
 var SPEED := 5.0
-	
+
+
 const JUMP_VELOCITY := 6
 const GRAVITY_MAGNITUDE := 9.81
 const MOUSE_SENS := 0.003
@@ -48,8 +50,11 @@ var was_on_floor := false
 var current_animation := ""
 var camera_bob_time := 0.0
 var base_camera_position := Vector3.ZERO
+var is_performing_action := false
+var gun_mode := false
 
 func _ready() -> void:
+	gun.visible = gun_mode
 	target_basis = global_transform.basis.orthonormalized()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	floor_snap_length = 0.5
@@ -65,12 +70,22 @@ func _input(event: InputEvent) -> void:
 		SPEED = 8 if SPEED == 5 else 5
 		moving_anim = "running" if moving_anim == "walking" else "walking"
 
-	#if event.is_action_pressed("kick"):
-		#can_move = false
-		#play_animation_with_blend("kick", 0.1, true)
-		#await animation.animation_finished
-		#current_animation = ""
-		#can_move = true
+	if event.is_action_pressed("kick"):
+		start_action_animation("punch")
+	
+	if event.is_action_pressed("jab"):
+		start_action_animation("jab")
+		
+	if event.is_action_pressed("gun"):
+		gun_mode = not gun_mode
+		gun.visible = gun_mode
+		current_animation = ""
+
+		if gun_mode:
+			play_animation("gun")
+		else:
+			play_animation("idle")
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -236,12 +251,19 @@ func update_camera_bob(delta: float, horizontal_vel: Vector3, grounded: bool) ->
 	camera.rotation.z = lerp(camera.rotation.z, target_roll, delta * CAMERA_BOB_RETURN_SPEED)
 
 func update_animation_state(started_on_floor: bool, ended_on_floor: bool, move_dir: Vector3) -> void:
+	if is_performing_action:
+		return
+
 	if is_jumping and ended_on_floor and not started_on_floor:
 		is_jumping = false
 
 	if not ended_on_floor:
 		is_jumping = true
 		play_animation("jump")
+		return
+
+	if gun_mode:
+		play_animation("gun")
 		return
 
 	if move_dir.length_squared() > DIRECTION_EPSILON:
@@ -254,12 +276,30 @@ func play_animation(name: String) -> void:
 	play_animation_with_blend(name, ANIMATION_BLEND_TIME)
 
 func play_animation_with_blend(name: String, blend: float = ANIMATION_BLEND_TIME, force: bool = false) -> void:
-	if not force and current_animation == name:
+	if not force and current_animation == name and animation.is_playing():
 		return
 
 	if animation.has_animation(name):
 		animation.play(name, blend)
 		current_animation = name
+	elif name == "idle":
+		animation.stop()
+		current_animation = ""
+
+func start_action_animation(name: String) -> void:
+	if is_performing_action or not animation.has_animation(name):
+		return
+
+	is_performing_action = true
+	can_move = false
+	play_animation_with_blend(name, 0.1, true)
+	finish_action_animation()
+
+func finish_action_animation() -> void:
+	await animation.animation_finished
+	current_animation = ""
+	can_move = true
+	is_performing_action = false
 
 func get_projected_forward_on_plane(new_up: Vector3) -> Vector3:
 	var candidates := [
