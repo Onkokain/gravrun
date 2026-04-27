@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bkrkui173di8s" path="res://assets/public/3D/first_person_arms_1.png" id="3_k7j8n"]
 [ext_resource type="Texture2D" uid="uid://jjg1mspse3j3" path="res://assets/public/3D/first_person_arms_2.png" id="4_6d8gs"]
 [ext_resource type="PackedScene" uid="uid://clkqnlgbxybtk" path="res://assets/public/3D/gun_10mm.glb" id="5_k7j8n"]
-[ext_resource type="AudioStream" uid="uid://c05f3bwdkaw1j" path="res://assets/public/audio/gunshot.mp3" id="7_6d8gs"]
-[ext_resource type="AudioStream" uid="uid://mj2yb2aourap" path="res://assets/public/audio/punch.mp3" id="8_to34q"]
-[ext_resource type="AudioStream" uid="uid://bprog38jnqxi2" path="res://assets/public/audio/jab.mp3" id="9_t1va5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybqmx"]
 resource_name = "arms"
@@ -10120,12 +10117,3 @@ shape = SubResource("CapsuleShape3D_u8vuu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1628270856]
 libraries/ = SubResource("AnimationLibrary_6d8gs")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1822349519]
-stream = ExtResource("7_6d8gs")
-
-[node name="punch" type="AudioStreamPlayer2D" parent="." unique_id=314242089]
-stream = ExtResource("8_to34q")
-
-[node name="jab" type="AudioStreamPlayer2D" parent="." unique_id=852122689]
-stream = ExtResource("9_t1va5")

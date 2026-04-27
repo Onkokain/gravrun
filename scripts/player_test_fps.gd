@@ -9,11 +9,13 @@ extends CharacterBody3D
 @onready var walking: AudioStreamPlayer3D = $walking
 @onready var jump: AudioStreamPlayer3D = $jump
 @onready var gun: Node3D = $YawPivot/PitchPivot/Camera3D/gun
+@onready var gunshot: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var jab: AudioStreamPlayer2D = $jab
+@onready var punch: AudioStreamPlayer2D = $punch
 
 var can_move = true
 var moving_anim = "walking"
 var SPEED := 5.0
-
 
 const JUMP_VELOCITY := 6
 const GRAVITY_MAGNITUDE := 9.81
@@ -35,12 +37,22 @@ const CAMERA_BOB_RETURN_SPEED := 10.0
 const ANIMATION_BLEND_TIME := 0.18
 const SWITCH_RAY_LENGTH := 100.0
 const DIRECTION_EPSILON := 0.0001
+const BULLET_RANGE := 120.0
+const BULLET_RADIUS := 0.04
+const BULLET_SPEED := 30.0
+const BULLET_TRAIL_LENGTH := 0.45
+const BULLET_LIGHT_RANGE := 3.5
+const BULLET_LIGHT_ENERGY := 2.2
+const BULLET_IMPACT_HOLD := 0.06
 
 # Footstep sound settings
 const WALK_PITCH := 1.0
 const RUN_PITCH := 1.22
 const WALK_VOLUME_DB := -4.0
 const SILENT_VOLUME_DB := -80.0
+
+# Punch/jab forward knockback strength
+const PUNCH_KNOCKBACK := 2.5
 
 var gravity_dir: Vector3 = Vector3.DOWN
 var target_basis: Basis
@@ -52,6 +64,11 @@ var camera_bob_time := 0.0
 var base_camera_position := Vector3.ZERO
 var is_performing_action := false
 var gun_mode := false
+var action_locks_movement := false
+var active_bullets: Array[Dictionary] = []
+
+var combo_queued := false
+var combo_action := ""
 
 func _ready() -> void:
 	gun.visible = gun_mode
@@ -70,22 +87,42 @@ func _input(event: InputEvent) -> void:
 		SPEED = 8 if SPEED == 5 else 5
 		moving_anim = "running" if moving_anim == "walking" else "walking"
 
-	if event.is_action_pressed("kick"):
-		start_action_animation("punch")
-	
-	if event.is_action_pressed("jab"):
-		start_action_animation("jab")
-		
+	if event.is_action_pressed("kick") and not gun_mode:
+		if is_performing_action:
+			combo_queued = true
+			combo_action = "punch"
+		else:
+			punch.play()
+			apply_punch_knockback()
+			start_action_animation("punch", false)
+
+	if event.is_action_pressed("jab") and not gun_mode:
+		if is_performing_action:
+			combo_queued = true
+			combo_action = "jab"
+		else:
+			jab.play()
+			apply_punch_knockback()
+			start_action_animation("jab", false)
+
 	if event.is_action_pressed("gun"):
 		gun_mode = not gun_mode
 		gun.visible = gun_mode
 		current_animation = ""
+		is_performing_action = false
+		can_move = true
+		combo_queued = false
+		combo_action = ""
 
 		if gun_mode:
 			play_animation("gun")
 		else:
 			play_animation("idle")
-	
+
+	if event.is_action_pressed("shoot") and gun_mode:
+		start_action_animation("shoot", false)
+		fire_bullet()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -159,12 +196,19 @@ func _physics_process(delta: float) -> void:
 	var ended_on_floor := is_on_floor()
 	update_animation_state(started_on_floor, ended_on_floor, move_dir)
 	was_on_floor = ended_on_floor
+	update_bullets(delta)
 
 	var pitch_alpha := 1.0 - exp(-PITCH_ROTATE_SPEED * delta)
 	pitch_pivot.rotation.x = lerp_angle(pitch_pivot.rotation.x, target_pitch, pitch_alpha)
 
 	update_camera_bob(delta, horizontal_vel, ended_on_floor)
 	update_footsteps(move_dir, ended_on_floor)
+
+func apply_punch_knockback() -> void:
+	var up := up_direction.normalized()
+	var forward := -global_transform.basis.z
+	forward = (forward - up * forward.dot(up)).normalized()
+	velocity += forward * PUNCH_KNOCKBACK
 
 func update_footsteps(move_dir: Vector3, grounded: bool) -> void:
 	var is_moving := move_dir.length_squared() > DIRECTION_EPSILON and grounded and can_move
@@ -259,7 +303,10 @@ func update_animation_state(started_on_floor: bool, ended_on_floor: bool, move_d
 
 	if not ended_on_floor:
 		is_jumping = true
-		play_animation("jump")
+		if gun_mode:
+			play_animation("gun")
+		else:
+			play_animation("jump")
 		return
 
 	if gun_mode:
@@ -286,20 +333,148 @@ func play_animation_with_blend(name: String, blend: float = ANIMATION_BLEND_TIME
 		animation.stop()
 		current_animation = ""
 
-func start_action_animation(name: String) -> void:
+func start_action_animation(name: String, lock_movement: bool = true) -> void:
 	if is_performing_action or not animation.has_animation(name):
 		return
 
 	is_performing_action = true
-	can_move = false
+	action_locks_movement = lock_movement
+	if lock_movement:
+		can_move = false
 	play_animation_with_blend(name, 0.1, true)
 	finish_action_animation()
 
 func finish_action_animation() -> void:
 	await animation.animation_finished
 	current_animation = ""
-	can_move = true
+	if action_locks_movement:
+		can_move = true
+	action_locks_movement = false
 	is_performing_action = false
+
+	if combo_queued and not gun_mode:
+		combo_queued = false
+		var next := combo_action
+		combo_action = ""
+		if next == "punch":
+			punch.play()
+		elif next == "jab":
+			jab.play()
+		apply_punch_knockback()
+		start_action_animation(next, false)
+	else:
+		combo_queued = false
+		combo_action = ""
+
+func fire_bullet() -> void:
+	gunshot.play()
+	var start := gun.global_transform.origin
+	var direction := -camera.global_transform.basis.z.normalized()
+	spawn_bullet_projectile(start, direction)
+
+func spawn_bullet_projectile(start: Vector3, direction: Vector3) -> void:
+	if direction.length_squared() <= DIRECTION_EPSILON:
+		return
+
+	var projectile := Node3D.new()
+	var bullet_mesh_instance := MeshInstance3D.new()
+	var trail_mesh_instance := MeshInstance3D.new()
+	var bullet_light := OmniLight3D.new()
+	var bullet_mesh := SphereMesh.new()
+	var trail_mesh := CylinderMesh.new()
+	var material := StandardMaterial3D.new()
+
+	bullet_mesh.radius = BULLET_RADIUS
+	bullet_mesh.height = BULLET_RADIUS * 2.0
+
+	trail_mesh.top_radius = BULLET_RADIUS * 0.55
+	trail_mesh.bottom_radius = BULLET_RADIUS * 1.15
+	trail_mesh.height = BULLET_TRAIL_LENGTH
+	trail_mesh.radial_segments = 8
+	trail_mesh.rings = 1
+
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.albedo_color = Color(0.2, 1.0, 0.35, 1.0)
+	material.emission_enabled = true
+	material.emission = Color(0.2, 1.0, 0.35, 1.0)
+	material.emission_energy_multiplier = 4.5
+
+	bullet_mesh_instance.mesh = bullet_mesh
+	bullet_mesh_instance.material_override = material
+	bullet_mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+
+	trail_mesh_instance.mesh = trail_mesh
+	trail_mesh_instance.material_override = material
+	trail_mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	trail_mesh_instance.position = Vector3(0.0, 0.0, BULLET_TRAIL_LENGTH * 0.5)
+	trail_mesh_instance.rotate_object_local(Vector3.RIGHT, deg_to_rad(90.0))
+
+	bullet_light.light_color = Color(0.2, 1.0, 0.35, 1.0)
+	bullet_light.light_energy = BULLET_LIGHT_ENERGY
+	bullet_light.omni_range = BULLET_LIGHT_RANGE
+	bullet_light.shadow_enabled = false
+	bullet_light.light_specular = 0.2
+
+	projectile.add_child(trail_mesh_instance)
+	projectile.add_child(bullet_mesh_instance)
+	projectile.add_child(bullet_light)
+	get_tree().current_scene.add_child(projectile)
+
+	projectile.global_transform = Transform3D.IDENTITY
+	projectile.global_position = start
+	projectile.look_at(start - direction, Vector3.UP)
+
+	active_bullets.append({
+		"node": projectile,
+		"direction": direction,
+		"traveled": 0.0,
+		"impact_timer": -1.0
+	})
+
+func update_bullets(delta: float) -> void:
+	for i in range(active_bullets.size() - 1, -1, -1):
+		var bullet := active_bullets[i]
+		var projectile: Node3D = bullet["node"]
+
+		if not is_instance_valid(projectile):
+			active_bullets.remove_at(i)
+			continue
+
+		var impact_timer: float = bullet["impact_timer"]
+		if impact_timer >= 0.0:
+			impact_timer -= delta
+			if impact_timer <= 0.0:
+				projectile.queue_free()
+				active_bullets.remove_at(i)
+			else:
+				bullet["impact_timer"] = impact_timer
+				active_bullets[i] = bullet
+			continue
+
+		var direction: Vector3 = bullet["direction"]
+		var step := BULLET_SPEED * delta
+		var start := projectile.global_transform.origin
+		var end := start + direction * step
+
+		var query := PhysicsRayQueryParameters3D.create(start, end)
+		query.exclude = [self.get_rid()]
+		query.collide_with_areas = false
+		query.collide_with_bodies = true
+
+		var hit := get_world_3d().direct_space_state.intersect_ray(query)
+		if not hit.is_empty():
+			projectile.global_position = hit.position
+			bullet["impact_timer"] = BULLET_IMPACT_HOLD
+			active_bullets[i] = bullet
+			continue
+
+		projectile.global_position = end
+		bullet["traveled"] = bullet["traveled"] + step
+		if bullet["traveled"] >= BULLET_RANGE:
+			projectile.queue_free()
+			active_bullets.remove_at(i)
+		else:
+			active_bullets[i] = bullet
 
 func get_projected_forward_on_plane(new_up: Vector3) -> Vector3:
 	var candidates := [
