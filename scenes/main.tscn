@@ -1,43 +1,25 @@
 [gd_scene format=3 uid="uid://r1rho0ocxnuf"]
 
 [ext_resource type="PackedScene" uid="uid://srxpn3xmxinn" path="res://scripts/player_test_fps.tscn" id="1_sugp2"]
+[ext_resource type="Environment" uid="uid://bhijdxtpfy6hs" path="res://shaders/new_environment.tres" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cm0qwn3gwdkr6" path="res://scenes/start_room.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://kh2l57tjdsht" path="res://scenes/hallway.tscn" id="3_sugp2"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ekxnf"]
-sky_top_color = Color(0.019607844, 0.023529412, 0.078431375, 1)
-sky_horizon_color = Color(0.06666667, 0.08627451, 0.18039216, 1)
-ground_bottom_color = Color(0.007843138, 0.007843138, 0.02745098, 1)
-ground_horizon_color = Color(0.02745098, 0.03137255, 0.08235294, 1)
-sun_angle_max = 0.0
-energy_multiplier = 0.35
-
-[sub_resource type="Sky" id="Sky_bqqt6"]
-sky_material = SubResource("ProceduralSkyMaterial_ekxnf")
-
-[sub_resource type="Environment" id="Environment_wu84c"]
-background_mode = 2
-sky = SubResource("Sky_bqqt6")
-ambient_light_source = 3
-ambient_light_color = Color(0.07450981, 0.101960786, 0.16862746, 1)
-ambient_light_sky_contribution = 0.05
-ambient_light_energy = 0.5
-tonemap_mode = 2
-glow_enabled = true
-glow_intensity = 0.78
-glow_bloom = 0.08
-adjustment_enabled = true
-adjustment_brightness = 0.85
-adjustment_contrast = 1.1
-adjustment_saturation = 0.8
+[ext_resource type="PackedScene" uid="uid://cbg1mnd4kupwv" path="res://scenes/level_1.tscn" id="4_jyhfs"]
 
 [node name="main" type="Node3D" unique_id=1946727683]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1200671077]
-environment = SubResource("Environment_wu84c")
+environment = ExtResource("1_tbgi4")
 
 [node name="BridgeAmbientLight" type="OmniLight3D" parent="." unique_id=885420014]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4.2, -10)
+light_color = Color(0.5568628, 0.7019608, 1, 1)
+light_energy = 1.6
+light_specular = 0.35
+omni_range = 24.0
+
+[node name="BridgeAmbientLight2" type="OmniLight3D" parent="." unique_id=473109817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.3484411, 74.64836)
 light_color = Color(0.5568628, 0.7019608, 1, 1)
 light_energy = 1.6
 light_specular = 0.35
@@ -48,9 +30,14 @@ transform = Transform3D(2.15, 0, 0, 0, 2.15, 0, 0, 0, 2.15, -14, 0, -9.848837)
 
 [node name="Node3D" parent="." unique_id=1403521078 instance=ExtResource("3_sugp2")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.9635415, -0.36030674, -2.9808755)
+visible = false
 
 [node name="Node3D2" parent="." unique_id=1320531067 instance=ExtResource("3_sugp2")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.9635415, -0.36030674, 19.739637)
+visible = false
 
 [node name="player2" parent="." unique_id=289016444 instance=ExtResource("1_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.712081, 1.7222675, -6.8773794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13019466, 8.262779, -112.964806)
+
+[node name="Level 1" parent="." unique_id=211102549 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -117.41589)

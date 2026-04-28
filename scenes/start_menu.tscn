@@ -1,3 +1,312 @@
 [gd_scene format=3 uid="uid://bass5yn2jbols"]
 
+[ext_resource type="Script" uid="uid://bbu10ypmg4xoe" path="res://scripts/start_menu.gd" id="1_fcv5n"]
+[ext_resource type="Shader" uid="uid://cutrhku2mtjbn" path="res://shaders/start_menu.gdshader" id="1_ouf4f"]
+[ext_resource type="Shader" uid="uid://bjh8fmqpvs810" path="res://shaders/stars.gdshader" id="1_thu50"]
+[ext_resource type="Texture2D" uid="uid://t2dd3wj4umkb" path="res://assets/public/2D/cute astonaut.png" id="3_h61rw"]
+[ext_resource type="FontFile" uid="uid://4hv6an27uw08" path="res://assets/public/fonts/ArkitechLight-ovWKz.otf" id="3_m7x51"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7x51"]
+shader = ExtResource("1_thu50")
+shader_parameter/sky_color = Color(0.019607844, 0.039215688, 0.12156863, 0)
+shader_parameter/star_color = Color(1, 1, 1, 1)
+shader_parameter/star_density = 307.8950122500125
+shader_parameter/star_threshold = 0.99399998062314
+shader_parameter/star_size = 10.2000000095
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_thu50"]
+shader = ExtResource("1_ouf4f")
+shader_parameter/stretch = Vector2(1.25, 0.78)
+shader_parameter/intensity = 1.0
+shader_parameter/pulse_speed = 1.0
+shader_parameter/wobble_amount = 0.035
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h61rw"]
+blend_mode = 3
+
 [node name="start menu" type="Node2D" unique_id=1529019339]
+script = ExtResource("1_fcv5n")
+
+[node name="background" type="Node2D" parent="." unique_id=591939991]
+
+[node name="color 1" type="ColorRect" parent="background" unique_id=419644803]
+offset_top = -1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.008082928, 0.039769277, 0.13714561, 0.5647059)
+
+[node name="color 2" type="ColorRect" parent="background" unique_id=1734613766]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.008082928, 0.039769277, 0.13714561, 0.5647059)
+
+[node name="stars" type="ColorRect" parent="background" unique_id=1990187748]
+material = SubResource("ShaderMaterial_m7x51")
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="blue highlight" type="ColorRect" parent="background" unique_id=141566075]
+self_modulate = Color(0.101960786, 0.8156863, 1, 1)
+material = SubResource("ShaderMaterial_thu50")
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.105882354, 0.38431373, 1, 1)
+
+[node name="CuteAstonaut" type="Sprite2D" parent="background" unique_id=548980666]
+material = SubResource("CanvasItemMaterial_h61rw")
+position = Vector2(1019.00006, 234)
+scale = Vector2(0.115, 0.11500002)
+texture = ExtResource("3_h61rw")
+
+[node name="CuteAstonaut2" type="Sprite2D" parent="background" unique_id=1572589115]
+material = SubResource("CanvasItemMaterial_h61rw")
+position = Vector2(1019.00006, 234)
+scale = Vector2(0.115, 0.11500002)
+texture = ExtResource("3_h61rw")
+
+[node name="CuteAstonaut3" type="Sprite2D" parent="background" unique_id=1915548377]
+position = Vector2(1026, 242)
+scale = Vector2(0.115, 0.11500002)
+texture = ExtResource("3_h61rw")
+
+[node name="title" type="Node2D" parent="background" unique_id=457761501]
+
+[node name="shadow" type="Label" parent="background/title" unique_id=1120941486]
+modulate = Color(0, 0, 0, 1)
+offset_left = 73.0
+offset_top = 57.0
+offset_right = 1067.0
+offset_bottom = 137.0
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 80
+text = "Grávitas Zéro"
+vertical_alignment = 1
+
+[node name="title" type="Label" parent="background/title" unique_id=628044248]
+offset_left = 78.0
+offset_top = 62.0
+offset_right = 1072.0
+offset_bottom = 142.0
+theme_override_colors/font_color = Color(0.37897778, 0.5336707, 0.95582, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 80
+text = "Grávitas Zéro"
+vertical_alignment = 1
+
+[node name="Main Menu" type="Node2D" parent="." unique_id=22165518]
+
+[node name="buttons" type="Node2D" parent="Main Menu" unique_id=1530348635]
+
+[node name="CenterContainer" type="CenterContainer" parent="Main Menu/buttons" unique_id=1291598411]
+offset_top = 87.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/buttons/CenterContainer" unique_id=157346463]
+custom_minimum_size = Vector2(700, 550)
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="play" type="Button" parent="Main Menu/buttons/CenterContainer/VBoxContainer" unique_id=1805771144]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 60
+text = "Play"
+
+[node name="settings" type="Button" parent="Main Menu/buttons/CenterContainer/VBoxContainer" unique_id=549464687]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+
+[node name="quit" type="Button" parent="Main Menu/buttons/CenterContainer/VBoxContainer" unique_id=1179557746]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 60
+text = "Quitgame"
+
+[node name="Settings" type="Node2D" parent="." unique_id=106185857]
+visible = false
+
+[node name="Panel" type="Panel" parent="Settings" unique_id=469491689]
+offset_left = 85.0
+offset_top = 162.0
+offset_right = 1067.0
+offset_bottom = 610.0
+
+[node name="Main Settings" type="Node2D" parent="Settings/Panel" unique_id=1397737682]
+
+[node name="title" type="CenterContainer" parent="Settings/Panel/Main Settings" unique_id=1325955189]
+offset_right = 987.0
+offset_bottom = 83.0
+
+[node name="settings" type="Label" parent="Settings/Panel/Main Settings/title" unique_id=1936176416]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="buttons" type="CenterContainer" parent="Settings/Panel/Main Settings" unique_id=1607098190]
+offset_top = 66.0
+offset_right = 982.0
+offset_bottom = 448.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/Panel/Main Settings/buttons" unique_id=1398932796]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Audio" type="Button" parent="Settings/Panel/Main Settings/buttons/VBoxContainer" unique_id=416544005]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 40
+text = "Audio"
+
+[node name="Visuals" type="Button" parent="Settings/Panel/Main Settings/buttons/VBoxContainer" unique_id=284252256]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 40
+text = "Visuals"
+
+[node name="Audio" type="Node2D" parent="Settings/Panel" unique_id=827552920]
+
+[node name="Visuals" type="Node2D" parent="Settings/Panel" unique_id=1248852994]
+
+[node name="close_settings" type="Button" parent="Settings/Panel" unique_id=1329171259]
+layout_mode = 0
+offset_left = 934.0
+offset_right = 982.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 40
+text = "X"
+
+[node name="Level Selector" type="Node2D" parent="." unique_id=1460698171]
+visible = false
+
+[node name="Panel" type="Panel" parent="Level Selector" unique_id=635656934]
+offset_left = 85.0
+offset_top = 162.0
+offset_right = 1067.0
+offset_bottom = 610.0
+
+[node name="Level Selector" type="Node2D" parent="Level Selector/Panel" unique_id=301000631]
+
+[node name="title" type="CenterContainer" parent="Level Selector/Panel/Level Selector" unique_id=1408724744]
+offset_right = 987.0
+offset_bottom = 83.0
+
+[node name="Level Selector" type="Label" parent="Level Selector/Panel/Level Selector/title" unique_id=1379111232]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 50
+text = "Levels"
+
+[node name="buttons" type="CenterContainer" parent="Level Selector/Panel/Level Selector" unique_id=813306751]
+offset_top = 66.0
+offset_right = 982.0
+offset_bottom = 448.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Level Selector/Panel/Level Selector/buttons" unique_id=835714271]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Level Selector/Panel/Level Selector/buttons/VBoxContainer" unique_id=1989164125]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Button" type="Button" parent="Level Selector/Panel/Level Selector/buttons/VBoxContainer/HBoxContainer" unique_id=1451494692]
+custom_minimum_size = Vector2(150, 130)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 80
+text = "1"
+
+[node name="Button2" type="Button" parent="Level Selector/Panel/Level Selector/buttons/VBoxContainer/HBoxContainer" unique_id=1087469150]
+custom_minimum_size = Vector2(150, 130)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 80
+text = "2"
+
+[node name="Button3" type="Button" parent="Level Selector/Panel/Level Selector/buttons/VBoxContainer/HBoxContainer" unique_id=1471266084]
+custom_minimum_size = Vector2(150, 130)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 80
+text = "3"
+
+[node name="Button4" type="Button" parent="Level Selector/Panel/Level Selector/buttons/VBoxContainer/HBoxContainer" unique_id=1679588136]
+custom_minimum_size = Vector2(150, 130)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 80
+text = "4"
+
+[node name="Button5" type="Button" parent="Level Selector/Panel/Level Selector/buttons/VBoxContainer/HBoxContainer" unique_id=372084166]
+custom_minimum_size = Vector2(150, 130)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 80
+text = "5"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Level Selector/Panel/Level Selector/buttons/VBoxContainer" unique_id=1636350717]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Button" type="Button" parent="Level Selector/Panel/Level Selector/buttons/VBoxContainer/HBoxContainer2" unique_id=1300855503]
+custom_minimum_size = Vector2(150, 130)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 80
+text = "6"
+
+[node name="Button2" type="Button" parent="Level Selector/Panel/Level Selector/buttons/VBoxContainer/HBoxContainer2" unique_id=779304489]
+custom_minimum_size = Vector2(150, 130)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 80
+text = "7"
+
+[node name="Button3" type="Button" parent="Level Selector/Panel/Level Selector/buttons/VBoxContainer/HBoxContainer2" unique_id=747499529]
+custom_minimum_size = Vector2(150, 130)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 80
+text = "8"
+
+[node name="Button4" type="Button" parent="Level Selector/Panel/Level Selector/buttons/VBoxContainer/HBoxContainer2" unique_id=874178668]
+custom_minimum_size = Vector2(150, 130)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 80
+text = "9"
+
+[node name="Button5" type="Button" parent="Level Selector/Panel/Level Selector/buttons/VBoxContainer/HBoxContainer2" unique_id=1808720949]
+custom_minimum_size = Vector2(150, 130)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 80
+text = "10"
+
+[node name="close_level_selector" type="Button" parent="Level Selector/Panel" unique_id=371637762]
+layout_mode = 0
+offset_left = 934.0
+offset_right = 982.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("3_m7x51")
+theme_override_font_sizes/font_size = 40
+text = "X"
+
+[connection signal="button_up" from="Main Menu/buttons/CenterContainer/VBoxContainer/play" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="Main Menu/buttons/CenterContainer/VBoxContainer/settings" to="." method="_on_settings_button_up"]
+[connection signal="button_up" from="Main Menu/buttons/CenterContainer/VBoxContainer/quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="Settings/Panel/close_settings" to="." method="_on_close_settings_button_up"]
+[connection signal="button_up" from="Level Selector/Panel/close_level_selector" to="." method="_on_close_level_selector_button_up"]
