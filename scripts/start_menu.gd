@@ -39,3 +39,7 @@ func _on_close_settings_button_up() -> void:
 func _on_close_level_selector_button_up() -> void:
 	main_menu.visible=true
 	level_selector.visible=false
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main.tscn")

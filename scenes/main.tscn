@@ -4,7 +4,7 @@
 [ext_resource type="Environment" uid="uid://bhijdxtpfy6hs" path="res://shaders/new_environment.tres" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cm0qwn3gwdkr6" path="res://scenes/start_room.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://kh2l57tjdsht" path="res://scenes/hallway.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://cbg1mnd4kupwv" path="res://scenes/level_1.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://d0an2ndiddy4" path="res://scenes/multiplayer_arena.tscn" id="4_jyhfs"]
 
 [node name="main" type="Node3D" unique_id=1946727683]
 
@@ -25,19 +25,60 @@ light_energy = 1.6
 light_specular = 0.35
 omni_range = 24.0
 
-[node name="room" parent="." unique_id=92296285 instance=ExtResource("2_0wfyh")]
-transform = Transform3D(2.15, 0, 0, 0, 2.15, 0, 0, 0, 2.15, -14, 0, -9.848837)
-
-[node name="Node3D" parent="." unique_id=1403521078 instance=ExtResource("3_sugp2")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.9635415, -0.36030674, -2.9808755)
-visible = false
-
-[node name="Node3D2" parent="." unique_id=1320531067 instance=ExtResource("3_sugp2")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.9635415, -0.36030674, 19.739637)
-visible = false
+[node name="room3" parent="." unique_id=382071409 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(-2.15, 0, -1.8795897e-07, 0, 2.15, 0, 1.8795897e-07, 0, -2.15, -13.7999, 0, 192.41655)
 
 [node name="player2" parent="." unique_id=289016444 instance=ExtResource("1_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13019466, 8.262779, -112.964806)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2408285, 0.4576589, -5.877839)
 
-[node name="Level 1" parent="." unique_id=211102549 instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -117.41589)
+[node name="Node3D3" parent="." unique_id=1328136588 instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.8679695, -0.42744923, -2.4154873)
+
+[node name="BridgeAmbientLight3" type="OmniLight3D" parent="." unique_id=1194874913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4.2, -10)
+light_color = Color(0.5568628, 0.7019608, 1, 1)
+light_energy = 1.6
+light_specular = 0.35
+omni_range = 24.0
+
+[node name="BridgeAmbientLight4" type="OmniLight3D" parent="." unique_id=1712977005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.3484411, 74.64836)
+light_color = Color(0.5568628, 0.7019608, 1, 1)
+light_energy = 1.6
+light_specular = 0.35
+omni_range = 24.0
+
+[node name="room2" parent="." unique_id=1358454405 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(2.15, 0, 0, 0, 2.15, 0, 0, 0, 2.15, -14, 0, -9.848837)
+
+[node name="Node3D8" parent="." unique_id=1644350261 instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.8679695, -0.42744923, 19.967093)
+
+[node name="Node3D9" parent="." unique_id=1783008923 instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.8679695, -0.42744923, 42.967094)
+
+[node name="BridgeAmbientLight5" type="OmniLight3D" parent="." unique_id=1144673614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4.2, 104.16856)
+light_color = Color(0.5568628, 0.7019608, 1, 1)
+light_energy = 1.6
+light_specular = 0.35
+omni_range = 24.0
+
+[node name="BridgeAmbientLight6" type="OmniLight3D" parent="." unique_id=830047380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.3484411, 188.81691)
+light_color = Color(0.5568628, 0.7019608, 1, 1)
+light_energy = 1.6
+light_specular = 0.35
+omni_range = 24.0
+
+[node name="Node3D10" parent="." unique_id=552851711 instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.8679695, -0.42744923, 111.75307)
+
+[node name="Node3D11" parent="." unique_id=303360576 instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.8679695, -0.42744923, 134.13565)
+
+[node name="Node3D12" parent="." unique_id=1401164074 instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.8679695, -0.42744923, 157.13565)
+
+[node name="Node3D6" parent="." unique_id=719884528 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -16, -12, 92.43796)

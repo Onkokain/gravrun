@@ -309,4 +309,5 @@ text = "X"
 [connection signal="button_up" from="Main Menu/buttons/CenterContainer/VBoxContainer/settings" to="." method="_on_settings_button_up"]
 [connection signal="button_up" from="Main Menu/buttons/CenterContainer/VBoxContainer/quit" to="." method="_on_quit_button_up"]
 [connection signal="button_up" from="Settings/Panel/close_settings" to="." method="_on_close_settings_button_up"]
+[connection signal="pressed" from="Level Selector/Panel/Level Selector/buttons/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="button_up" from="Level Selector/Panel/close_level_selector" to="." method="_on_close_level_selector_button_up"]

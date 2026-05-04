@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d0an2ndiddy4"]
+
+[ext_resource type="PackedScene" uid="uid://cmrxui47m5xq" path="res://assets/blender/room1.blend" id="1_nmcax"]
+
+[node name="Node3D" type="Node3D" unique_id=719884528]
+
+[node name="room1" parent="." unique_id=663289328 instance=ExtResource("1_nmcax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
