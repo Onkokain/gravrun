@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cbvcmyjjw23tq"]
+
+[ext_resource type="Environment" uid="uid://bhijdxtpfy6hs" path="res://shaders/new_environment.tres" id="1_g83ud"]
+[ext_resource type="PackedScene" uid="uid://cm0qwn3gwdkr6" path="res://scenes/start_room.tscn" id="2_6j3wd"]
+[ext_resource type="PackedScene" uid="uid://srxpn3xmxinn" path="res://scripts/player_test_fps.tscn" id="3_hp87r"]
+[ext_resource type="PackedScene" uid="uid://kh2l57tjdsht" path="res://scenes/hallway.tscn" id="4_mvjca"]
+
+[node name="main" type="Node3D" unique_id=1946727683]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1200671077]
+environment = ExtResource("1_g83ud")
+
+[node name="BridgeAmbientLight" type="OmniLight3D" parent="." unique_id=885420014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4.2, -10)
+light_color = Color(0.5568628, 0.7019608, 1, 1)
+light_energy = 1.6
+light_specular = 0.35
+omni_range = 24.0
+
+[node name="BridgeAmbientLight2" type="OmniLight3D" parent="." unique_id=473109817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.3484411, 74.64836)
+light_color = Color(0.5568628, 0.7019608, 1, 1)
+light_energy = 1.6
+light_specular = 0.35
+omni_range = 24.0
+
+[node name="player2" parent="." unique_id=289016444 instance=ExtResource("3_hp87r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2408285, 0.4576589, -5.877839)
+
+[node name="Node3D3" parent="." unique_id=1328136588 instance=ExtResource("4_mvjca")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.8679695, -0.42744923, -2.4154873)
+
+[node name="BridgeAmbientLight3" type="OmniLight3D" parent="." unique_id=1194874913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4.2, -10)
+light_color = Color(0.5568628, 0.7019608, 1, 1)
+light_energy = 1.6
+light_specular = 0.35
+omni_range = 24.0
+
+[node name="BridgeAmbientLight4" type="OmniLight3D" parent="." unique_id=1712977005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.3484411, 74.64836)
+light_color = Color(0.5568628, 0.7019608, 1, 1)
+light_energy = 1.6
+light_specular = 0.35
+omni_range = 24.0
+
+[node name="room2" parent="." unique_id=1358454405 instance=ExtResource("2_6j3wd")]
+transform = Transform3D(2.15, 0, 0, 0, 2.15, 0, 0, 0, 2.15, -14, 0, -9.848837)
+
+[node name="Node3D8" parent="." unique_id=1644350261 instance=ExtResource("4_mvjca")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.8679695, -0.42744923, 19.967093)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1951006368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.597166, 3.346527, 45.753)
+use_collision = true
+size = Vector3(9.472778, 7.3462524, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1070211587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.597166, 1.3192737, 24.54186)
+use_collision = true
+size = Vector3(8.496094, 3.5985107, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=77984345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.597166, 6.1132836, 31.144533)
+use_collision = true
+size = Vector3(8.496094, 3.5985107, 1)
