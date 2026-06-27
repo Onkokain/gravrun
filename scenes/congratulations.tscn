@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://dmoss1pbgn7hu"]
+
+[ext_resource type="Shader" uid="uid://bjh8fmqpvs810" path="res://shaders/stars.gdshader" id="2_adchd"]
+[ext_resource type="Shader" uid="uid://cutrhku2mtjbn" path="res://shaders/start_menu.gdshader" id="3_vyy7p"]
+[ext_resource type="Texture2D" uid="uid://t2dd3wj4umkb" path="res://assets/public/2D/cute astonaut.png" id="4_1qttm"]
+[ext_resource type="FontFile" uid="uid://4hv6an27uw08" path="res://assets/public/fonts/ArkitechLight-ovWKz.otf" id="5_qtnum"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7x51"]
+shader = ExtResource("2_adchd")
+shader_parameter/sky_color = Color(0.019607844, 0.039215688, 0.12156863, 0)
+shader_parameter/star_color = Color(1, 1, 1, 1)
+shader_parameter/star_density = 307.8950122500125
+shader_parameter/star_threshold = 0.99399998062314
+shader_parameter/star_size = 10.2000000095
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_thu50"]
+shader = ExtResource("3_vyy7p")
+shader_parameter/stretch = Vector2(1.25, 0.78)
+shader_parameter/intensity = 1.0
+shader_parameter/pulse_speed = 1.0
+shader_parameter/wobble_amount = 0.035
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h61rw"]
+blend_mode = 3
+
+[node name="start menu" type="Node2D" unique_id=1529019339]
+
+[node name="background" type="Node2D" parent="." unique_id=591939991]
+
+[node name="color 1" type="ColorRect" parent="background" unique_id=419644803]
+offset_top = -1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.008082928, 0.039769277, 0.13714561, 0.5647059)
+
+[node name="color 2" type="ColorRect" parent="background" unique_id=1734613766]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.008082928, 0.039769277, 0.13714561, 0.5647059)
+
+[node name="stars" type="ColorRect" parent="background" unique_id=1990187748]
+material = SubResource("ShaderMaterial_m7x51")
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="blue highlight" type="ColorRect" parent="background" unique_id=141566075]
+self_modulate = Color(0.101960786, 0.8156863, 1, 1)
+material = SubResource("ShaderMaterial_thu50")
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.105882354, 0.38431373, 1, 1)
+
+[node name="CuteAstonaut" type="Sprite2D" parent="background" unique_id=548980666]
+material = SubResource("CanvasItemMaterial_h61rw")
+position = Vector2(1019.00006, 234)
+scale = Vector2(0.115, 0.11500002)
+texture = ExtResource("4_1qttm")
+
+[node name="CuteAstonaut2" type="Sprite2D" parent="background" unique_id=1572589115]
+material = SubResource("CanvasItemMaterial_h61rw")
+position = Vector2(1019.00006, 234)
+scale = Vector2(0.115, 0.11500002)
+texture = ExtResource("4_1qttm")
+
+[node name="CuteAstonaut3" type="Sprite2D" parent="background" unique_id=1915548377]
+position = Vector2(1026, 242)
+scale = Vector2(0.115, 0.11500002)
+texture = ExtResource("4_1qttm")
+
+[node name="title" type="Node2D" parent="background" unique_id=457761501]
+
+[node name="shadow" type="Label" parent="background/title" unique_id=1120941486]
+modulate = Color(0, 0, 0, 1)
+offset_left = 73.0
+offset_top = 57.0
+offset_right = 1067.0
+offset_bottom = 137.0
+theme_override_fonts/font = ExtResource("5_qtnum")
+theme_override_font_sizes/font_size = 80
+text = "Grávitas Zéro"
+vertical_alignment = 1
+
+[node name="title" type="Label" parent="background/title" unique_id=628044248]
+offset_left = 78.0
+offset_top = 62.0
+offset_right = 1072.0
+offset_bottom = 142.0
+theme_override_colors/font_color = Color(0.37897778, 0.5336707, 0.95582, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_qtnum")
+theme_override_font_sizes/font_size = 80
+text = "Grávitas Zéro"
+vertical_alignment = 1
+
+[node name="congrats" type="Node2D" parent="." unique_id=961225050]
+
+[node name="shadow" type="Label" parent="congrats" unique_id=209054042]
+modulate = Color(0, 0, 0, 1)
+offset_left = -2.0
+offset_top = 220.0
+offset_right = 2266.0
+offset_bottom = 300.0
+theme_override_colors/font_color = Color(1, 0.19215687, 1, 1)
+theme_override_fonts/font = ExtResource("5_qtnum")
+theme_override_font_sizes/font_size = 50
+text = "Congratulations!!"
+vertical_alignment = 1
+
+[node name="title" type="Label" parent="congrats" unique_id=1811608483]
+offset_left = 3.0
+offset_top = 225.0
+offset_right = 2271.0
+offset_bottom = 305.0
+theme_override_colors/font_color = Color(1, 0.19215687, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_qtnum")
+theme_override_font_sizes/font_size = 50
+text = "Congratulations!!"
+vertical_alignment = 1
+
+[node name="shadow2" type="Label" parent="congrats" unique_id=1312254610]
+modulate = Color(0, 0, 0, 1)
+offset_left = -1.0
+offset_top = 308.0
+offset_right = 2267.0
+offset_bottom = 388.0
+theme_override_colors/font_color = Color(1, 0.19215687, 1, 1)
+theme_override_fonts/font = ExtResource("5_qtnum")
+theme_override_font_sizes/font_size = 50
+text = "On beating LVL 1"
+vertical_alignment = 1
+
+[node name="title2" type="Label" parent="congrats" unique_id=563220632]
+offset_left = 4.0
+offset_top = 313.0
+offset_right = 2272.0
+offset_bottom = 393.0
+theme_override_colors/font_color = Color(1, 0.19215687, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_qtnum")
+theme_override_font_sizes/font_size = 50
+text = "On beating LVL 1"
+vertical_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="." unique_id=912050426]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Node2D" unique_id=532231056]
+offset_left = 4.0
+offset_top = 493.0
+offset_right = 1155.0
+offset_bottom = 579.0
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="Button" type="Button" parent="Node2D/HBoxContainer" unique_id=1395460174]
+layout_mode = 2
+text = "Next level"
+
+[node name="Button2" type="Button" parent="Node2D/HBoxContainer" unique_id=775154874]
+layout_mode = 2
+text = "Play again"
+
+[node name="Button3" type="Button" parent="Node2D/HBoxContainer" unique_id=386572688]
+layout_mode = 2
+text = "Main Menu"
