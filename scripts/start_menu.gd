@@ -250,7 +250,7 @@ func _make_button(text_value: String, callback: Callable) -> Button:
 		if Global:
 			Global.play_sfx("click")
 		callback.call()
-	)
+	)s
 	
 	button.mouse_entered.connect(func(): _hover_button(button, true, indicator))
 	button.mouse_exited.connect(func(): _hover_button(button, false, indicator))

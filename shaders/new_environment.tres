@@ -14,6 +14,7 @@ sky_material = SubResource("ProceduralSkyMaterial_ekxnf")
 [resource]
 background_mode = 2
 sky = SubResource("Sky_bqqt6")
+sky_custom_fov = 21.0
 ambient_light_source = 3
 ambient_light_color = Color(0.07450981, 0.101960786, 0.16862746, 1)
 ambient_light_sky_contribution = 0.05
