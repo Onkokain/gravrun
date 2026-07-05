@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://cbvcmyjjw23tq"]
+[gd_scene format=3 uid="uid://lymyisrlmo3"]
 
 [ext_resource type="Script" uid="uid://dckvo8ekukdft" path="res://scripts/level_controller.gd" id="1"]
 
-[node name="Level1" type="Node3D" unique_id=602344515]
+[node name="Level5" type="Node3D" unique_id=243940560]
 script = ExtResource("1")
+level_number = 5

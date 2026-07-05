@@ -13,6 +13,8 @@ extends CharacterBody3D
 @onready var jab: AudioStreamPlayer2D = $jab
 @onready var punch: AudioStreamPlayer2D = $punch
 
+signal gravity_switched(new_direction: Vector3)
+
 var can_move = true
 var moving_anim = "walking"
 var SPEED := 5.0
@@ -148,8 +150,15 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("switch"):
 		var new_gravity_dir := get_switch_gravity_direction()
-		if new_gravity_dir != Vector3.ZERO:
-			change_gravity(new_gravity_dir)
+		var is_new_direction := new_gravity_dir != Vector3.ZERO and gravity_dir.normalized().dot(new_gravity_dir.normalized()) <= 0.999
+		if is_new_direction:
+			var stamina := get_tree().get_first_node_in_group("stamina_hud")
+			if stamina == null or stamina.try_consume():
+				change_gravity(new_gravity_dir)
+				Global.record_gravity_switch()
+				Global.play_sfx("switch")
+				gravity_switched.emit(new_gravity_dir)
+				_spawn_gravity_switch_effect()
 
 	var body_alpha := 1.0 - exp(-BODY_ROTATE_SPEED * delta)
 	transform.basis = transform.basis.slerp(target_basis, body_alpha).orthonormalized()
@@ -245,13 +254,13 @@ func get_switch_gravity_direction() -> Vector3:
 
 	return -normal.normalized()
 
-func change_gravity(new_dir: Vector3) -> void:
+func change_gravity(new_dir: Vector3) -> bool:
 	if new_dir.length_squared() <= DIRECTION_EPSILON:
-		return
+		return false
 
 	new_dir = new_dir.normalized()
 	if gravity_dir.normalized().dot(new_dir) > 0.999:
-		return
+		return false
 
 	gravity_dir = new_dir
 	is_jumping = false
@@ -262,6 +271,41 @@ func change_gravity(new_dir: Vector3) -> void:
 
 	velocity = velocity.slide(new_up)
 	up_direction = new_up
+	return true
+
+func reset_gravity_state() -> void:
+	gravity_dir = Vector3.DOWN
+	up_direction = Vector3.UP
+	velocity = Vector3.ZERO
+	is_jumping = false
+	target_pitch = 0.0
+	target_basis = Basis.IDENTITY
+	transform.basis = Basis.IDENTITY
+	pitch_pivot.rotation = Vector3.ZERO
+
+func _spawn_gravity_switch_effect() -> void:
+	var ring := MeshInstance3D.new()
+	var mesh := TorusMesh.new()
+	var material := StandardMaterial3D.new()
+	mesh.inner_radius = 0.52
+	mesh.outer_radius = 0.58
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.albedo_color = Color(0.2, 0.75, 1.0, 0.7)
+	material.emission_enabled = true
+	material.emission = Color(0.2, 0.75, 1.0)
+	material.emission_energy_multiplier = 2.0
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	ring.mesh = mesh
+	ring.material_override = material
+	get_tree().current_scene.add_child(ring)
+	ring.global_position = global_position + up_direction.normalized() * 0.8
+	ring.look_at(ring.global_position + gravity_dir.normalized(), up_direction.normalized())
+
+	var tween := ring.create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(ring, "scale", Vector3(4.0, 4.0, 4.0), 0.35)
+	tween.parallel().tween_property(ring, "modulate:a", 0.0, 0.35)
+	tween.finished.connect(ring.queue_free)
 
 func setup_first_person_view() -> void:
 	var eye_height := 1.6
