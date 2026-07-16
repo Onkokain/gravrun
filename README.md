@@ -1,3 +1,10 @@
+
+## Play Online
+
+You can play Gravrun directly in your web browser without installing anything:
+
+https://baralekogyan.itch.io/gravrun
+
 # Gravrun
 
 Gravrun is a first person 3D parkour game where movement revolves around manipulating gravity. Instead of being limited to one direction you, you can instantly redirect gravity toward the surface you're looking at, allowing you to run across walls, ceilings, and other structures. Every level is designed around this mechanic, requiring precise movement, timing, and skills to move towards the exit.
@@ -36,12 +43,6 @@ Each of the ten levels introduces new challenges that test your understanding of
 * Godot 4.7
 * GDScript
 * Jolt Physics
-
-## Play Online
-
-You can play Gravrun directly in your web browser without installing anything:
-
-https://baralekogyan.itch.io/gravrun
 
 ## Running Locally
 
